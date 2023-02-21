@@ -1,0 +1,47 @@
+.sp1 {
+    font-size: small;
+    color: grey;
+    padding-left: 5%;
+}
+
+.spCorrect {
+    font-size: small;
+    color: rgb(0, 171, 0);
+} 
+
+.spInCorrect {
+    font-size: small;
+    color: red;
+}
+
+fieldset {
+    border: 2px solid red;
+    width: 500px;
+    margin: 15px;
+    border-radius: 15px;
+    padding: 5%;
+}
+
+fieldset legend {
+    font-style: italic;
+    font-size: large;
+    font-weight: 600;
+}
+
+.input1 {
+    width: 150px;
+}
+
+.input2 {
+    width: 140px;
+    margin: auto 5%;
+}
+
+form {
+    margin: auto 30%;
+}
+
+hr {
+    border: dashed 2px gray;
+    color: gray;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Check</title>
+    <link rel="stylesheet" href="styleh2.css">
+</head>
+
+<body>
+    <form action="" method="get">
+        <fieldset>
+            <legend>Form Check</legend>
+            <label>姓名:</label>
+            <input type="text" id="idName" size="2" class="input1"><!-- 瀏覽器執行到此標籤會建立一個物件-->
+            <span id="spName"></span><br />
+            <span class="sp1">(1.不可空白2.至少兩個字以上3.必須全部為中文字)</span><br />
+            <hr>
+
+            <label>密碼:</label>
+            <input type="text" id="idPwd" size="6" class="input1">
+            <span id="spPwd"></span><br />
+            <span class="sp1">(1.不可空白2.至少六個字以上3.必須包含1個數字 + 1個英文字 + 1個特殊字元[!@#$%^&*])</span><br/>
+            <hr>
+
+            <label>日期:</label>
+            <input type="text" id="idDate" size="2" class="input1">
+            <span id="spDate"></span><br/>
+            <span class="sp1">(格式:西元年/月/日(yyyy/mm/dd))</span><br />
+            <hr>
+
+            <!-- <input type="button" class="input2" id="idbut" value="CheckAll"
+
+                onclick="checkName(), checkPwd(), checkDate()" /> -->
+                
+
+            <script src="homework2.js">
+
+            </script>
+
+        </fieldset>
+    </form>
+</body>
+
+</html>

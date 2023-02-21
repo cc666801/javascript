@@ -1,0 +1,23 @@
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left: 20%;
+    margin-top: 5%;
+    background-color: blanchedalmond;
+    border: 1px solid black;
+}
+
+th {
+    padding: 10px 20px;
+    border: 1px solid black;
+    color: blueviolet;
+    
+}
+
+td {
+    padding: 10px 20px;
+    border: 1px solid black;
+    color: blueviolet;
+    border-bottom: none;
+    border-top: none;
+}
