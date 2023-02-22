@@ -1,80 +1,57 @@
 
-document.getElementById("star1").addEventListener("mouseover", changeStar1)
-document.getElementById("star1").addEventListener("mouseout", recoverStar1)
+let arrayStar = new Array();
 
-document.getElementById("star2").addEventListener("mouseover", changeStar2)
-document.getElementById("star2").addEventListener("mouseout", recoverStar2)
-
-document.getElementById("star3").addEventListener("mouseover", changeStar3)
-document.getElementById("star3").addEventListener("mouseout", recoverStar3)
-
-document.getElementById("star4").addEventListener("mouseover", changeStar4)
-document.getElementById("star4").addEventListener("mouseout", recoverStar4)
-
-document.getElementById("star5").addEventListener("mouseover", changeStar5)
-document.getElementById("star5").addEventListener("mouseout", recoverStar5)
-
-document.getElementById("score").addEventListener("click", score)
-document.getElementById("score").addEventListener("dblclick", reset)
-
-
-
-function changeStar1(event) {
-    document.getElementById("star1").src = "Images/chngstar.gif"
+for (let i = 0; i < 5; i++) {
+    arrayStar[i] = document.getElementById(`star${i+1}`);
+    console.log(arrayStar[i]);
 }
 
-function recoverStar1(event) {
-    document.getElementById("star1").src="Images/star.gif"
+reset();
+
+function changeStar(event) {
+    // Get currentTarget and set Sibling before currentTarget change to chngstar.gif
+    let currentStarElementInArrayStar = arrayStar.indexOf(document.getElementById(event.currentTarget.id));
+    for (let i = 0; i <= currentStarElementInArrayStar; i++) {
+        arrayStar[i].src = "Images/chngstar.gif";
+    }
+    // Make figcaption1.text float
+    document.getElementById("figcaption1").innerHTML = `單擊星星可評分, 雙擊星星重置<br>
+    評分為.... ${arrayStar.indexOf(document.getElementById(event.currentTarget.id))+1}`
+
 }
 
-
-function changeStar2(event) {
-    changeStar1();
-    document.getElementById("star2").src = "Images/chngstar.gif"
+function recoverStar(event) {
+    // Get currentTarget and set Sibling before currentTarget change to star.gif
+    let currentStarElementInArrayStar = arrayStar.indexOf(document.getElementById(event.currentTarget.id));
+    for (let i = 0; i <= currentStarElementInArrayStar; i++) {
+        arrayStar[i].src = "Images/star.gif";
+    }
 }
-
-function recoverStar2(event) {
-    recoverStar1();
-    document.getElementById("star2").src="Images/star.gif"
-}
-
-
-function changeStar3(event) {
-    changeStar2();
-    document.getElementById("star3").src = "Images/chngstar.gif"
-}
-
-function recoverStar3(event) {
-    recoverStar2();
-    document.getElementById("star3").src="Images/star.gif"
-}
-
-
-function changeStar4(event) {
-    changeStar3();
-    document.getElementById("star4").src = "Images/chngstar.gif"
-}
-
-function recoverStar4(event) {
-    recoverStar3();
-    document.getElementById("star4").src="Images/star.gif"
-}
-
-
-function changeStar5(event) {
-    changeStar4();
-    document.getElementById("star5").src = "Images/chngstar.gif"
-}
-
-function recoverStar5(event) {
-    recoverStar4();
-    document.getElementById("star5").src="Images/star.gif"
-}
-
-
 
 function score(event) {
-    
+    // Remove EventListener from star1 to star5 when event click occur
+    for (let i = 0; i < arrayStar.length; i++) {
+        arrayStar[i].removeEventListener("mouseover", changeStar);
+        arrayStar[i].removeEventListener("mouseout", recoverStar);
+    }
+    // Make figcaption1.text to score
+    document.getElementById("figcaption1").innerHTML = `你的評分為...${arrayStar.indexOf(document.getElementById(event.currentTarget.id))+1}`
+}
+
+
+function reset(event) {
+    // addEventListener to star1 to star5
+    for (let i = 0; i < arrayStar.length; i++) {
+        // Change star to black and white
+        arrayStar[i].src = "Images/star.gif";
+        arrayStar[i].addEventListener("mouseover", changeStar)
+        arrayStar[i].addEventListener("mouseout", recoverStar)
+        arrayStar[i].addEventListener("click", score)
+        arrayStar[i].addEventListener("dblclick", reset)
+    }
+    // Make figcaption1.text to begin
+    document.getElementById("figcaption1").innerHTML = `單擊星星可評分, 雙擊星星重置<br>
+    評分為.... 0`
 }
 
 

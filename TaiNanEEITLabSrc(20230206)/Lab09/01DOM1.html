@@ -26,9 +26,15 @@
 
         //取得根元素 documentElement
         let root = document.documentElement;  //HTML
+        // alert(root.nodeType);  //1
+        // alert(root.nodeName);  //HTML
+        // alert(root.nodeValue);  //null
 
 
         let thebody = root.childNodes[1];  //BODY
+        // alert(thebody.nodeName);  //BODY
+        // alert(thebody.childNodes[1].nodeName);  //P
+        // alert(thebody.childNodes[1].firstChild.nodeValue);  //I am a JavaScript
 
 
         let theNode = root.childNodes[1].childNodes[3].childNodes[3];  //LI
@@ -46,6 +52,7 @@
         for (let i = 0; i < lis.length; i++) {
             //alert(lis.item(i).firstChild.nodeValue);
             //alert(lis[i].firstChild.nodeValue);
+            // console.log(lis[i].innerHTML);
 
         }
     </script>

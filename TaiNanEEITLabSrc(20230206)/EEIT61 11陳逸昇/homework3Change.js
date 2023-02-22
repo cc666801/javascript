@@ -1,36 +1,65 @@
 
-let fig = document.getElementById("starFigure");
-
 let listStar = document.querySelectorAll("img");
 
-document.getElementById("star1").addEventListener("mouseover", changeStar)
-document.getElementById("star1").addEventListener("mouseout", recoverStar)
+let arrayStar = new Array();
 
-document.getElementById("star2").addEventListener("mouseover", changeStar)
-document.getElementById("star2").addEventListener("mouseout", recoverStar)
+// Add listStar to array
+for (let i = 0; i < listStar.length; i++) {
+    arrayStar[i] = document.getElementById(listStar[i].id)
+}
 
-document.getElementById("star3").addEventListener("mouseover", changeStar)
-document.getElementById("star3").addEventListener("mouseout", recoverStar)
+reset();
 
-document.getElementById("star4").addEventListener("mouseover", changeStar)
-document.getElementById("star4").addEventListener("mouseout", recoverStar)
-
-document.getElementById("star5").addEventListener("mouseover", changeStar)
-document.getElementById("star5").addEventListener("mouseout", recoverStar)
+// for (let i = 0; i < arrayStar.length; i++) {
+//     arrayStar[i].addEventListener("mouseover", changeStar)
+//     arrayStar[i].addEventListener("mouseout", recoverStar)
+//     arrayStar[i].addEventListener("click", score)
+//     arrayStar[i].addEventListener("dblclick", reset)
+// }
 
 function changeStar(event) {
+    // Get currentTarget and set Sibling before currentTarget change to chngstar.gif
     let currentStarElement = document.getElementById(event.currentTarget.id);
-    while(currentStarElement) {
+    while (currentStarElement) {
         currentStarElement.src = "Images/chngstar.gif";
         currentStarElement = currentStarElement.previousElementSibling;
     }
+    // Make figcaption1.text float
+    document.getElementById("figcaption1").innerHTML = `單擊星星可評分, 雙擊星星重置<br>
+    評分為.... ${arrayStar.indexOf(document.getElementById(event.currentTarget.id))+1}`
 }
 
 function recoverStar(event) {
+    // Get currentTarget and set Sibling before currentTarget change to star.gif
     let currentStarElement = document.getElementById(event.currentTarget.id);
-    while(currentStarElement) {
+    while (currentStarElement) {
         currentStarElement.src = "Images/star.gif";
         currentStarElement = currentStarElement.previousElementSibling;
     }
 }
 
+function score(event) {
+    // Remove EventListener from star1 to star5 when event click occur
+    for (let i = 0; i < arrayStar.length; i++) {
+        arrayStar[i].removeEventListener("mouseover", changeStar);
+        arrayStar[i].removeEventListener("mouseout", recoverStar);
+    }
+    // Make figcaption1.text to score
+    document.getElementById("figcaption1").innerHTML = `你的評分為... ${arrayStar.indexOf(document.getElementById(event.currentTarget.id))+1}`
+}
+
+
+function reset(event) {
+    // addEventListener to star1 to star5
+    for (let i = 0; i < arrayStar.length; i++) {
+        // Change star to black and white
+        arrayStar[i].src = "Images/star.gif";
+        arrayStar[i].addEventListener("mouseover", changeStar)
+        arrayStar[i].addEventListener("mouseout", recoverStar)
+        arrayStar[i].addEventListener("click", score)
+        arrayStar[i].addEventListener("dblclick", reset)
+    }
+    // Make figcaption1.text to begin
+    document.getElementById("figcaption1").innerHTML = `單擊星星可評分, 雙擊星星重置<br>
+    評分為.... 0`
+}

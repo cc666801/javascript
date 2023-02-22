@@ -23,24 +23,36 @@
         //nodeType 讀取節點類型
         //*****************************************
       
-        let root =document.documentElement;
-        // console.log(root.nodeName);
+        let root =document.documentElement;  //HTML
+        console.log(root.nodeName);
         let thehead=root.firstElementChild;  //HEAD
+        console.log(thehead.nodeName);
         let thebody=root.lastElementChild;  //BODY
-        let theUl=thebody.firstElementChild.nextElementSibling.nextElementSibling;  //UL
-        let theUlchilds=theUl.childElementCount;        
-        // console.log(theUl.childNodes);
-        // console.log(theUl.childNodes[1].firstChild.nodeValue);
-        // console.log(theUl.children);  //6
-        // console.log(theUl.children[0].innerHTML)
-        // console.log(theUl.firstElementChild);
+        console.log(thebody.nodeName);
 
-        // let childEl = theUl.firstElementChild;
-        // while ( childEl ) {
-        //     console.log(childEl);
-        //     console.log(childEl.innerHTML)
-        //     childEl = childEl.nextElementSibling;                    
-        // }
+        let theUl=thebody.firstElementChild.nextElementSibling.nextElementSibling;  //UL
+        console.log(theUl.nodeName);
+
+        let theUlchilds=theUl.childElementCount;  
+        console.log(theUlchilds);
+
+        console.log(theUl.childNodes);  //DOM Node Tree
+        console.log(theUl.childNodes[1].firstChild.nodeValue);   //aaaaa
+
+        console.log(theUl.children);  //6  DOM Element Tree
+        console.log(theUl.children[0].innerHTML);
+
+        console.log(theUl.firstElementChild);  //<li>aaaaa</li>
+
+        let childEl = theUl.firstElementChild;  //<li>aaaaa</li>
+
+        // console.log(childEl); 
+        // null-> false, has value -> true
+        while ( childEl ) {
+            console.log(childEl);
+            console.log(childEl.innerHTML)
+            childEl = childEl.nextElementSibling;                    
+        }
     </script>
 </body>
 </html>
